@@ -1,17 +1,12 @@
 #!/bin/bash
 
 echo "Список файлов и каталогов в текущей директории:"
-for item in *; do
-    if [ -d "$item" ]; then
-        echo "$item - это каталог"
-    elif [ -f "$item" ]; then
-        echo "$item - это файл"
-    else
-        echo "$item - это другой тип"
-    fi
+file_list=$(file *)
+for file in $file_list; do
+    echo $file
 done
 
-echo 
+echo
 
 if [ $# -gt 0 ]; then
     file_to_check="$1"
